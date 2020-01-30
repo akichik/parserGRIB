@@ -8,6 +8,7 @@
 #include <map>
 #include <QFile>
 #include <QDebug>
+#include <QtWidgets/QMessageBox>
 
 #ifndef READER_H
 #define READER_H
@@ -53,16 +54,16 @@ public:
     Reader();
     ~Reader();
     //get
-    vector<string> reader();
     void readSec0(/*string*/);
     void readSec1(/*string*/);
-    long secLength(QByteRef,QByteRef,QByteRef);
+    long secLength(char,char,char);
     int int2(char,char);
     string centerIndentification(char);
 private:
+    QMessageBox msgBox;
     Section0 sec0;
     Section1 sec1;
-    QFile file;
+    ifstream file;
 };
 
 

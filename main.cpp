@@ -1,4 +1,4 @@
-#include <QCoreApplication>
+#include <QApplication>
 #include <QTextCodec>
 #include <QTextStream>
 
@@ -16,7 +16,7 @@
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    QApplication app(argc, argv);
 
     /*QTextStream outStream(stdout);
         outStream.setCodec(QTextCodec::codecForName("cp866"));
@@ -32,5 +32,5 @@ int main(int argc, char *argv[])
        cout<<endl;
     }*/
 
-    return a.exec();
+    return app.exec();
 }
