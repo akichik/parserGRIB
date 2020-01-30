@@ -5,6 +5,9 @@
 #include <string>
 #include <vector>
 #include <tablessection1.h>
+#include <map>
+#include <QFile>
+#include <QDebug>
 
 #ifndef READER_H
 #define READER_H
@@ -48,15 +51,18 @@ class Reader
 {
 public:
     Reader();
+    ~Reader();
+    //get
     vector<string> reader();
-    void readSec0(string);
-    void readSec1(string);
-    long secLength(char,char,char);
+    void readSec0(/*string*/);
+    void readSec1(/*string*/);
+    long secLength(QByteRef,QByteRef,QByteRef);
     int int2(char,char);
     string centerIndentification(char);
 private:
     Section0 sec0;
     Section1 sec1;
+    QFile file;
 };
 
 

@@ -2,10 +2,19 @@
 using namespace std;
 Reader::Reader()
 {
-
+    reader.file.setFileName("C:\\Users\\Aleks\\Documents\\Anna\\gfs20200112200203822.grb");
+    if (file.isOpen()){
+      qDebug()<<"File is open";
+      cout<<"File is open";
+    }
+    reader.readSec0();
+}
+Reader::~Reader(){
+    //close
 }
 //
-vector<string> Reader::reader(){
+vector<string> Reader::reader()//удалить
+{
     unsigned int ch=0;  //Сюда считываются символы нужно считывать символы
     string s;  //Сообщение
     vector<string> v; //Вектор cообщений
@@ -45,32 +54,35 @@ vector<string> Reader::reader(){
     }
 
 
-void Reader::readSec0(string message){
+void Reader::readSec0(){
     cout<<"Section 0: "<<endl;
     //myFile.close ();
-
-
     Reader reader;
+    bool ok;
+    QByteArray message=reader.file.read(8);
+
    if(((char)message[0]=='G')&&((char)message[1]=='R')&&((char)message[2]=='I')&&((char)message[3]=='B'))
    {
        reader.sec0.totalLength=reader.secLength (message[4],message[5],message[6]);
        cout<<"Length of message: "<<reader.sec0.totalLength<<endl;
 
-       if(message[7]==1){
+       /*if((message[7].toInt(&ok,10))==1){
          reader.sec0.editNumber=1;
        }
        else {
           reader.sec0.editNumber=2;
        }
-       cout<<"GRIB type: "<<reader.sec0.editNumber<<endl;
+       cout<<"GRIB type: "<<reader.sec0.editNumber<<endl;*/
    }
-   message.erase(0,8); // удаляет из строки символ с индексом i
-   readSec1(message);
+   reader.file.seek (2*8);
+
+   //message.erase(0,8); // удаляет из строки символ с индексом i
+   //readSec1(message);
    //cout<<message<<endl;
 
 }
 
-void Reader::readSec1(string message){
+/*void Reader::readSec1(){
     Reader reader;
     cout<<"Section 1: "<<endl;
     reader.sec1.sectionLength=reader.secLength (message[0],message[1],message[2]);
@@ -131,8 +143,8 @@ void Reader::readSec1(string message){
 
     message.erase(message.begin(),message.begin()+reader.sec1.sectionLength);
 }
-
-long Reader::secLength (char a,char b, char c){
+*/
+long Reader::secLength (QByteRef a,QByteRef b, QByteRef c){
     return ((unsigned char)a<<16)+((unsigned char)b<<8)+(unsigned char)c;
 }
 
