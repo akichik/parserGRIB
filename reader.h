@@ -17,13 +17,13 @@ using namespace std;
 
 struct Section0
 {
-   long totalLength;
+    long totalLength;
     int editNumber;
 };
 
 struct Section1
 {
-   long sectionLength;
+    long sectionLength;
     int editNumber;
     int parameter_table_version_number;
     string identification_of_center;
@@ -52,18 +52,21 @@ class Reader
 {
 public:
     Reader();
+    Reader (char*); //конструктор с файлом, открытие через проводник
     ~Reader();
-    //get
+    //getEOF
+    Reader *readSecs();
     void readSec0(/*string*/);
     void readSec1(/*string*/);
     long secLength(char,char,char);
     int int2(char,char);
     string centerIndentification(char);
+    ifstream file;
 private:
     QMessageBox msgBox;
     Section0 sec0;
     Section1 sec1;
-    ifstream file;
+   // ifstream file;
 };
 
 

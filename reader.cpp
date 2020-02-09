@@ -1,11 +1,11 @@
 #include "reader.h"
 using namespace std;
-Reader::Reader()
+Reader::Reader(char* fileName)
 {
-   file.open("C:\\Users\\Aleks\\Documents\\Anna\\gfs20200112200203822.grb",ios::binary);
+   file.open(fileName,ios::binary);
     if (file.is_open()){
       cout<<"File is open"<<endl;
-      readSec0();
+      //readSecs ();
     }
     else{
     msgBox.setWindowTitle("Ошибка");
@@ -13,14 +13,21 @@ Reader::Reader()
     msgBox.exec();
     }
 }
+
+Reader::Reader(){}
+
 Reader::~Reader(){
     file.close ();
 }
-
+//Вызывать чтение секций одного сообщения из одной функции,
+//проверить sec1 на наличие второй и третьей секции
+Reader* Reader::readSecs(){
+    readSec0();
+    readSec1();
+    return this;
+}
 void Reader::readSec0(){
-    //cout<<file.tellg()<<endl;
     cout<<"Section 0: "<<endl;
-    //myFile.close ();
     string message;
     for(int i=0;i<=7;i++){
         message[i]=file.get();
@@ -39,9 +46,7 @@ void Reader::readSec0(){
        }
        cout<<"GRIB type: "<<sec0.editNumber<<endl;
    }
-   //is.seekg (0, is.end);
-   //file.seekg ()
-  readSec1();
+ // readSec1();
 
 }
 
@@ -73,11 +78,11 @@ void Reader::readSec1(){
     sec1.GDS=(message[7]&128)!=0;
     sec1.BMS=(message[7]&64)!=0;
     if(sec1.GDS)
-        cout<<"GDS included"<<endl;
+        cout<<"GDS included=>Sec 2 with us"<<endl;
     else
         cout<<"GDS omitted"<<endl;
     if(sec1.BMS)
-        cout<<"BMS included"<<endl;
+        cout<<"BMS included=>Sec 3 with us"<<endl;
     else
         cout<<"BMS omitted"<<endl;
 

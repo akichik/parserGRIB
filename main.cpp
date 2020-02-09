@@ -10,6 +10,7 @@
 #include <reader.h>
 #include <windows.h>
 
+#include <map>
 
 
 
@@ -22,8 +23,12 @@ int main(int argc, char *argv[])
         outStream.setCodec(QTextCodec::codecForName("cp866"));
         outStream << QString("Русский текст в консоли") << endl;*/
 
-    Reader reader;
-
+    Reader reader("C:\\Users\\Aleks\\Documents\\Anna\\gfs20200112200203822.grb");
+    int i=1;
+    map <int, Reader*> msgs;
+    while(!reader.file.eof ()){
+       msgs[i]=reader.readSecs ();
+    }
    // vector<string> v;
 
    /* v=reader.reader();
