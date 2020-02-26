@@ -16,9 +16,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        bds.cpp \
+        es.cpp \
+        gds.cpp \
+        is.cpp \
         main.cpp \
-        reader.cpp \
-        test.cpp
+        message.cpp \
+        pds.cpp \
+        reader.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -26,6 +31,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    bds.h \
+    es.h \
+    gds.h \
+    is.h \
+    message.h \
+    pds.h \
     reader.h \
-    tablessection1.h \
-    test.h
+    tablessection1.h

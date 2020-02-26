@@ -1,15 +1,16 @@
 #include <QApplication>
 #include <QTextCodec>
 #include <QTextStream>
-
+#include <QFileDialog>
+#include<QString>
 
 #include <iostream>
 #include <fstream>
 #include <sys/stat.h>
 #include <cmath>
-#include <reader.h>
+#include <message.h>
 #include <windows.h>
-#include <test.h>
+
 #include <map>
 
 
@@ -19,12 +20,24 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+    QString path=QFileDialog::getOpenFileName(0,"Open file","","*.grb");
 
-    Reader reader("C:\\Users\\Aleks\\Documents\\Anna\\gfs20200112200203822.grb");
+    Message mess(path);
     int i=1;
-    map <int, Reader*> msgs;
-    while(!reader.getEOF ()){
-       msgs[i]=reader.readSecs ();
+
+
+    map <int, Message*> msgs;
+
+    while (!mess.getEOF ())
+    {
+        if(i > 1)
+            mess.file.unget();
+
+        msgs[i]=mess.readSecs ();
+        i++;
+
+        if(i > 1)
+            mess.file.get();
     }
 
     return app.exec();

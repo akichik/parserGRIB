@@ -1,18 +1,27 @@
-#include "test.h"
+#include "is.h"
 
+IS::IS()
+{
 
-void test::readSec(){
+}
+
+IS::~IS()
+{
+
+}
+
+void IS::readSec(ifstream *file)
+{
     cout<<"Section 0: "<<endl;
     string message;
-
     for(int i=0;i<=7;i++){
-        message[i]=this->file.get();
+        message[i]=file->get();
     }
 
    if(((char)message[0]=='G')&&((char)message[1]=='R')&&((char)message[2]=='I')&&((char)message[3]=='B'))
    {
 
-       totalLength=secLength (message[4],message[5],message[6]);
+       totalLength=secLength(message[4],message[5],message[6]);
        cout<<"Length of message: "<<totalLength<<endl;
 
        if(message[7]==1){
@@ -23,6 +32,5 @@ void test::readSec(){
        }
        cout<<"GRIB type: "<<editNumber<<endl;
    }
- // readSec1();
-
 }
+
