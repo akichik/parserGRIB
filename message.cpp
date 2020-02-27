@@ -22,15 +22,12 @@ Message::Message(QString fileName)
       cout<<"File is open"<<endl;
     }
     else{
-    /*msgBox.setWindowTitle("Ошибка");
+    msgBox.setWindowTitle("Ошибка");
     msgBox.setText("Данный файл не найден");
-    msgBox.exec();*/
+    msgBox.exec();
     }
 }
 
-
-//Вызывать чтение секций одного сообщения из одной функции,
-//проверить sec1 на наличие второй и третьей секции
 Message* Message::readSecs(){
 
     sec0.readSec(&file);
@@ -38,8 +35,8 @@ Message* Message::readSecs(){
     sec1.readSec(&file);
     if(sec1.getGDS())
         sec2.readSec (&file);
-    //if(sec1.getBMS ())
-        //sec3.readSec(&file);
+    if(sec1.getBMS ())
+        sec3.readSec(&file);
     sec4.readSec(&file);
     sec5.readSec(&file);
 
@@ -48,9 +45,16 @@ Message* Message::readSecs(){
     return this;
 }
 
-bool Message::getEOF()
+bool Message::checkEOF()
 {
-    return file.eof ();
+    char c=file.get();
+
+    if (file.eof ())
+        return true;
+    else{
+        file.unget();
+        return false;
+    }
 }
 
 /*ifstream Message::getFile()

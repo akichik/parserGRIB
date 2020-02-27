@@ -37,7 +37,9 @@ void PDS::readSec(ifstream *file)
     generating_process_ID_number=(unsigned char)message[5];
     cout<<"Generating process ID number"<<generating_process_ID_number<<endl;
 
-    cout<<"--Grid Identification"<<endl;
+
+    grid_identification=message[7];
+    cout<<"Grid Identification"<<grid_identification<<endl;
 
     GDS=(message[7]&128)!=0;
     BMS=(message[7]&64)!=0;
@@ -50,7 +52,7 @@ void PDS::readSec(ifstream *file)
 
     info_of_the_level_or_layer=int2(message[10],message[11]);
     cout<<"info_of_the_level_or_layer: "<<info_of_the_level_or_layer<<endl;
-//Why minut=-80?
+
     year=message[12]+message[24]*100-100;
     month=message[13];
     day=message[14];
@@ -71,8 +73,11 @@ void PDS::readSec(ifstream *file)
     number_missing_from_averages_or_accumulations=message[23];
     century=message[24];
     identification_of_sub_center=message[25];
-    factorD=int2(message[26],message[27]);//
-    cout<<"reader.sec1.factorD "<<factorD<<endl;
+
+
+
+    D=factorD(message[26],message[27]);//
+    cout<<"factorD "<<D<<endl;
 }
 
 long long PDS::UTC_mktime (
@@ -121,6 +126,21 @@ bool PDS::getBMS()
     if (BMS)
         return true;
 }
+
+int PDS::factorD(char a,char b)
+{
+         bool sign=((a&128)!=0);
+         a=a&127;
+         if (sign)
+             D=-int2(a,b);
+         else D=int2(a,b);
+}
+
+int PDS::getfactorD()
+{
+    return D;
+}
+
 string PDS::centerIndentification(char a)
 {
     string s;
@@ -197,11 +217,11 @@ uint PDS::period(int unit,int P1,int P2, int range)
         case 6: //	Normal (30 years)
         case 7: //	Century (100 years)
         default:
-            //erreur("id=%d: unknown time unit in PDS b18=%d",id,unit);
+
             res = 0;
-           // ok = false;
+
     }
-   // debug("id=%d: PDS (time range) b21=%d P1=%d P2=%d",id,range,P1,P2);
+
     dur = 0;
     switch (range) {
         case 0:
@@ -210,7 +230,7 @@ uint PDS::period(int unit,int P1,int P2, int range)
             dur = 0; break;
         case 2:
         case 3:
-            // dur = ((zuint)P1+(zuint)P2)/2; break;     // TODO
+
             dur = (int)P2; break;
          case 4:
             dur = (int)P2; break;

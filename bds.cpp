@@ -30,8 +30,10 @@ void BDS::readSec(ifstream *file)
         cout<<"Simple Pack"<<endl;
 
     E=int2(message[4],message[5]);
-    //функция для ref
+    ref(message[6],message[7],message[8],message[9]);
+    cout<<"refValue: "<<refValue<<endl;
     bit=message[10];
+    cout<<"bit in data: "<<bit<<endl;
    /* for (int i=0;i<sec4.sectionLength-11;i=+sec4.bit){
         sec4.data.push_back(int2(message[i],message[i+1]));
     }
@@ -42,4 +44,16 @@ void BDS::readSec(ifstream *file)
     cout<<endl;
 */
 
+}
+
+void BDS::ref(char a, char b, char c, char d)
+{
+    bool sign=((a&128)==0);
+    char A=a&127;
+    long B=((unsigned char)b<<16)+((unsigned char)c<<8)+(unsigned char)d;
+
+    if(sign)
+        refValue=(2^(-24))*B*16^(A-64);
+    else
+        refValue=-1*(2^(-24))*B*16^(A-64);
 }

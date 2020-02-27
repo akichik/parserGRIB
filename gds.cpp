@@ -70,7 +70,7 @@ void GDS::typeLanLon(ifstream *file)
     cout<<"Lo1: "<<Lo1<<endl;
     Lo1=secLength(message[7],message[8],message[9]);//+1
     cout<<"Lo2: "<<Lo2<<endl;
-    flags=message[10];//cделать таблицей
+    flags=message[10];
     cout<<"Flags: "<<flags<<endl;;
     La2=secLength(message[11],message[12],message[13]);//+1
     Lo2=secLength(message[14],message[15],message[16]);//+1

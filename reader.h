@@ -1,5 +1,4 @@
 #ifndef READER_H
-#pragma once
 #define READER_H
 
 #include <QDebug>

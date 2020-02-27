@@ -1,5 +1,5 @@
 #ifndef TABLESSECTION1_H
-
+///Центры
 enum class OrigCenters{
     USWS_NationalMetCenter=7,
     USWS_NWSTelecommsGateway=8,
@@ -18,7 +18,7 @@ enum class OrigCenters{
     //IG=99-101,
 
 };
-
+///Единица времени прогноза
 enum class TimeUnit{
     minute=0,
     hour=1,
@@ -32,7 +32,7 @@ enum class TimeUnit{
     second=254
 };
 
-// dataTypes      cf. GribRecord::translateDataType()
+/// Типы данных
 enum class dataTypes{
 GRB_PRESSURE= 1,  /* Pa     */
 GRB_PRESSURE_MSL=2,   /* Pa     */
@@ -102,7 +102,7 @@ GRB_TYPE_NOT_DEFINED=0 /* private */
 
 
 };
-
+///Тип уровня или слоя
 enum class levelType{
     LV_GND_SURF=1,
     LV_ISOTHERM0=4,

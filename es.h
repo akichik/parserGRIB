@@ -3,6 +3,15 @@
 #pragma once
 #include <reader.h>
 
+/*!
+\file
+\brief Заголовочный файл с описанием cекции 5
+*/
+
+
+/*!
+  \brief Класс для обработки 5 секции
+ */
 class ES :public Reader
 {
 public:

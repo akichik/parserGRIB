@@ -4,15 +4,28 @@
 #pragma once
 #include <reader.h>
 
-//Четвертая секция
+/*!
+\file
+\brief Заголовочный файл с описанием cекции 4
+*/
 
+
+/*!
+  \brief Класс для обработки 4 секции
+  \todo чтение данных и распаковка простой упаковки
+  \todo распаковка остальных упаковок
+ */
 class BDS:public Reader
 {
 public:
     BDS();
     virtual ~BDS();
     virtual void readSec(ifstream *file);
-
+    /*!
+     * \brief Вычисляет референсное значение
+     * \param октеты 7-10
+     */
+    void ref(char,char,char,char);
 private:
     long sectionLength;
     int flag;

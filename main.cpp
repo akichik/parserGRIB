@@ -24,21 +24,14 @@ int main(int argc, char *argv[])
 
     Message mess(path);
     int i=1;
-
-
     map <int, Message*> msgs;
 
-    while (!mess.getEOF ())
+    do
     {
-        if(i > 1)
-            mess.file.unget();
-
         msgs[i]=mess.readSecs ();
         i++;
-
-        if(i > 1)
-            mess.file.get();
     }
+    while (!mess.checkEOF ());
 
     return app.exec();
 }

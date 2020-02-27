@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         bds.cpp \
+        bms.cpp \
         es.cpp \
         gds.cpp \
         is.cpp \
@@ -32,6 +33,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     bds.h \
+    bms.h \
     es.h \
     gds.h \
     is.h \
@@ -39,3 +41,5 @@ HEADERS += \
     pds.h \
     reader.h \
     tablessection1.h
+
+FORMS +=

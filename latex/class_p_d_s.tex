@@ -1,0 +1,130 @@
+\hypertarget{class_p_d_s}{}\doxysection{Класс P\+DS}
+\label{class_p_d_s}\index{PDS@{PDS}}
+
+
+Класс для обработки 1 секции  
+
+
+
+
+{\ttfamily \#include $<$pds.\+h$>$}
+
+Граф наследования\+:P\+DS\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_p_d_s}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_p_d_s_aea20afc96cc37e699568bb45cd6f03f9}\label{class_p_d_s_aea20afc96cc37e699568bb45cd6f03f9}} 
+virtual void {\bfseries read\+Sec} (ifstream $\ast$)
+\item 
+string \mbox{\hyperlink{class_p_d_s_a924c7c5a8546ac6df7f180e441285ff7}{center\+Indentification}} (char a)
+\begin{DoxyCompactList}\small\item\em center\+Indentification \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_p_d_s_a8e1b796e8dc46ae1389682494df11b83}\label{class_p_d_s_a8e1b796e8dc46ae1389682494df11b83}} 
+uint {\bfseries period} (int, int, int, int)
+\item 
+long long \mbox{\hyperlink{class_p_d_s_a87b0e42191da4ccbbb4e90ef2cdaea91}{U\+T\+C\+\_\+mktime}} (int year, int month, int day, int hour, int min, int sec)
+\begin{DoxyCompactList}\small\item\em U\+T\+C\+\_\+mktime. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_p_d_s_aca292b99dc6a44f90e2da75e1711c90b}\label{class_p_d_s_aca292b99dc6a44f90e2da75e1711c90b}} 
+bool {\bfseries get\+G\+DS} ()
+\item 
+\mbox{\Hypertarget{class_p_d_s_a05303cd071e1a7daf64671d84922ab1a}\label{class_p_d_s_a05303cd071e1a7daf64671d84922ab1a}} 
+bool {\bfseries get\+B\+MS} ()
+\item 
+\mbox{\Hypertarget{class_p_d_s_a43d7b48d26c1c9c528203bd7a4e3fb5e}\label{class_p_d_s_a43d7b48d26c1c9c528203bd7a4e3fb5e}} 
+char {\bfseries get\+Data\+Type} ()
+\item 
+int \mbox{\hyperlink{class_p_d_s_a57e15399dd7f4114ed8de961764096f6}{factorD}} (char a, char b)
+\begin{DoxyCompactList}\small\item\em factorD Вычисляет D по двум октетам \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_p_d_s_a067ca8eff2bff2ea2ef032244a459f36}\label{class_p_d_s_a067ca8eff2bff2ea2ef032244a459f36}} 
+int {\bfseries getfactorD} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для обработки 1 секции 
+
+\begin{DoxyRefDesc}{Необходимо сделать}
+\item[\mbox{\hyperlink{todo__todo000004}{Необходимо сделать}}]функция для определения параметра и единиц измерения из \mbox{\hyperlink{tablessection1_8h_source}{tablessection1.\+h}} 
+
+проверить индекатор промежутка времени 
+
+добавить идентификаторы суб-\/центра \end{DoxyRefDesc}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{class_p_d_s_a924c7c5a8546ac6df7f180e441285ff7}\label{class_p_d_s_a924c7c5a8546ac6df7f180e441285ff7}} 
+\index{PDS@{PDS}!centerIndentification@{centerIndentification}}
+\index{centerIndentification@{centerIndentification}!PDS@{PDS}}
+\doxysubsubsection{\texorpdfstring{centerIndentification()}{centerIndentification()}}
+{\footnotesize\ttfamily string P\+D\+S\+::center\+Indentification (\begin{DoxyParamCaption}\item[{char}]{a }\end{DoxyParamCaption})}
+
+
+
+center\+Indentification 
+
+
+\begin{DoxyParams}[1]{Аргументы}
+\mbox{\texttt{ in}}  & {\em char} & 5 октет \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+идентификатор центра 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_p_d_s_a57e15399dd7f4114ed8de961764096f6}\label{class_p_d_s_a57e15399dd7f4114ed8de961764096f6}} 
+\index{PDS@{PDS}!factorD@{factorD}}
+\index{factorD@{factorD}!PDS@{PDS}}
+\doxysubsubsection{\texorpdfstring{factorD()}{factorD()}}
+{\footnotesize\ttfamily int P\+D\+S\+::factorD (\begin{DoxyParamCaption}\item[{char}]{a,  }\item[{char}]{b }\end{DoxyParamCaption})}
+
+
+
+factorD Вычисляет D по двум октетам 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em a} & 27 октет \\
+\hline
+{\em b} & 28 октет \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_p_d_s_a87b0e42191da4ccbbb4e90ef2cdaea91}\label{class_p_d_s_a87b0e42191da4ccbbb4e90ef2cdaea91}} 
+\index{PDS@{PDS}!UTC\_mktime@{UTC\_mktime}}
+\index{UTC\_mktime@{UTC\_mktime}!PDS@{PDS}}
+\doxysubsubsection{\texorpdfstring{UTC\_mktime()}{UTC\_mktime()}}
+{\footnotesize\ttfamily long long P\+D\+S\+::\+U\+T\+C\+\_\+mktime (\begin{DoxyParamCaption}\item[{int}]{year,  }\item[{int}]{month,  }\item[{int}]{day,  }\item[{int}]{hour,  }\item[{int}]{min,  }\item[{int}]{sec }\end{DoxyParamCaption})}
+
+
+
+U\+T\+C\+\_\+mktime. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em year} & год \\
+\hline
+{\em month} & месяц \\
+\hline
+{\em day} & день \\
+\hline
+{\em hour} & часы \\
+\hline
+{\em min} & минуты \\
+\hline
+{\em sec} & секунды \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+значение в формате U\+TC 
+\end{DoxyReturn}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{pds_8h}{pds.\+h}}\item 
+pds.\+cpp\end{DoxyCompactItemize}

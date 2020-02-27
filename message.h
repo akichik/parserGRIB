@@ -15,15 +15,15 @@
 #include<bds.h>
 #include<es.h>
 #include<gds.h>
-
-#include<fstream>
-
+#include<bms.h>
 
 
 #ifndef MESSAGE_H
 #define MESSAGE_H
 
-
+/*!
+  \brief Класс хранящи сообщение полностью
+ */
 class Message
 {
 public:
@@ -32,18 +32,21 @@ public:
     ~Message();
     Message *readSecs();
 
-    bool getEOF();
+    bool checkEOF();
 
-    ifstream getFile();
+
     bool endM;
-    ifstream file;
+
 private:
-    //ifstream file;
+    ifstream file;
     IS  sec0;
     PDS sec1;
     GDS sec2;
+    BMS sec3;
     BDS sec4;
     ES  sec5;
+
+    QMessageBox msgBox;
 
 };
 

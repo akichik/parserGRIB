@@ -4,8 +4,14 @@
 
 #include <reader.h>
 
-//Нулевая секция
+/*!
+\file
+\brief Заголовочный файл с описанием cекции 0
+*/
 
+/*!
+  \brief Класс для обработки 0 секции
+ */
 class IS:public Reader{
 public:
     IS();
