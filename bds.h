@@ -21,6 +21,17 @@ public:
     BDS();
     virtual ~BDS();
     virtual void readSec(ifstream *file);
+    BDS & operator =(const BDS&obj)
+    {
+        refValue = obj.refValue;
+       /* Ni = obj.Ni;
+        Nj=obj.Nj;
+        La1=obj.La1;
+        Lo1=obj.Lo1;
+        La2=obj.La2;
+        Lo2=obj.Lo2;*/
+        return *this;
+    }
     /*!
      * \brief Вычисляет референсное значение
      * \param октеты 7-10

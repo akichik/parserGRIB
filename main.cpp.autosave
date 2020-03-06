@@ -29,19 +29,5 @@ int main(int argc, char *argv[])
 
     std:: cout << "Uspehhh" << std::endl;
 
-    /*QList<Message*> list;
-    list.append (new Message (path));*/
-
-   /* Message mess(path);
-    int i=1;
-    map <int, Message*> msgs;
-
-    do
-    {
-        msgs[i]=mess.readSecs ();
-        i++;
-    }
-    while (!mess.checkEOF ());*/
-
     return app.exec();
 }

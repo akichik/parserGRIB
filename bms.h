@@ -17,6 +17,17 @@ class BMS:public Reader
 public:
     BMS();
     virtual ~BMS();
+    BMS & operator =(const BMS&obj)
+    {
+        specificBitmap = obj.specificBitmap;
+       /* Ni = obj.Ni;
+        Nj=obj.Nj;
+        La1=obj.La1;
+        Lo1=obj.Lo1;
+        La2=obj.La2;
+        Lo2=obj.Lo2;*/
+        return *this;
+    }
     virtual void readSec(ifstream *file);
 
 private:

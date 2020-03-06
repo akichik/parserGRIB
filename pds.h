@@ -24,6 +24,16 @@ class PDS: public Reader
 public:
     PDS();
     virtual ~PDS();
+    PDS & operator =(const PDS&obj)
+    {
+        identification_of_center = obj.identification_of_center;
+        grid_identification = obj.grid_identification;
+        indicator_of_parameter_and_units=obj.indicator_of_parameter_and_units;
+        indicator_of_type_of_level_or_layer=obj.indicator_of_type_of_level_or_layer;
+        refDate=obj.refDate;
+        identification_of_sub_center=obj.identification_of_sub_center;
+        return *this;
+    }
     virtual void readSec(ifstream*);
     /*!
      * \brief centerIndentification

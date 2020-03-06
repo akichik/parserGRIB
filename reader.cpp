@@ -22,7 +22,7 @@ Reader::~Reader()
 
 void Reader::readSec(ifstream *file)
 {
-    qDebug()<<"read section";
+    cout<<"read section";
 }
 
 long Reader::secLength(char a, char b, char c)

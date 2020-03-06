@@ -24,7 +24,7 @@ public:
 
 
 private:
-    QMessageBox msgBox;
+   // QMessageBox msgBox;
     //Message mess;
 };
 

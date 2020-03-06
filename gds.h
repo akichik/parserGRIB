@@ -17,6 +17,17 @@ class GDS:public Reader
 public:
     GDS();
     virtual ~GDS();
+    GDS & operator =(const GDS&obj)
+    {
+        DataType = obj.DataType;
+        Ni = obj.Ni;
+        Nj=obj.Nj;
+        La1=obj.La1;
+        Lo1=obj.Lo1;
+        La2=obj.La2;
+        Lo2=obj.Lo2;
+        return *this;
+    }
     virtual void readSec(ifstream *file);
     /*!
      * \brief typeLanLon
