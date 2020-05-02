@@ -1,7 +1,7 @@
 #ifndef BMS_H
 #define BMS_H
 #include <reader.h>
-
+#include <gds.h>
 /*!
 \file
 \brief Заголовочный файл с описанием cекции 3
@@ -29,8 +29,9 @@ public:
         return *this;
     }
     virtual void readSec(ifstream *file);
-
+    QList<bool> getBitMap();
 private:
+    QList<bool> bitMap;
     long sectionLength;
     int unusedBit;
     bool specificBitmap;

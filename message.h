@@ -22,12 +22,10 @@
 #define MESSAGE_H
 
 typedef struct uniData{
-    IS   sec0;
     PDS sec1;
     GDS sec2;
     BMS sec3;
     BDS sec4;
-   // ES  *sec5;
 }UniData;
 
 /*!
@@ -38,19 +36,11 @@ class Message
 public:
     Message(QString);
     ~Message();
-
-
     bool checkEOF();
-
-
-
-
     QList<UniData> getList();
 private:
     ifstream file;
-
     QList<UniData> listData;
-
 };
 
 

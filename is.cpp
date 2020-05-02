@@ -13,7 +13,8 @@ IS::~IS()
 void IS::readSec(ifstream *file)
 {
     cout<<"Section 0: "<<endl;
-    string message;
+    //string message;
+    char message[8];
     for(int i=0;i<=7;i++){
         message[i]=file->get();
     }
@@ -31,6 +32,10 @@ void IS::readSec(ifstream *file)
           editNumber=2;
        }
        cout<<"GRIB type: "<<editNumber<<endl;
+   }
+   else
+   {
+       cout << "Error, not read GRIB in sec 0" << endl;
    }
 }
 

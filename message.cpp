@@ -2,14 +2,10 @@
 
 #include "QDebug"
 
-
-
 Message::~Message(){}
-
 
 Message::Message(QString fileName)
 {
-
     IS  sec0;
     PDS sec1;
     GDS sec2;
@@ -24,9 +20,7 @@ Message::Message(QString fileName)
 
       UniData data;
       do
-      {
-
-        //sec0.readSec(&file);
+      {      
         sec0.readSec (&file);
         data.sec1.readSec (&file);
         if(data.sec1.getGDS())
@@ -36,26 +30,6 @@ Message::Message(QString fileName)
         data.sec4.readSec (&file);
 
         sec5.readSec (&file);
-
-        //data.sec0.readSec (&file);
-
-        /*sec1.readSec(&file);
-        data.sec1 = &sec1;
-
-        if(data.sec1->getGDS()){
-            sec2.readSec (&file);
-            data.sec2=&sec2;
-        }
-
-        if(data.sec1->getBMS ()){
-            sec3.readSec(&file);
-            data.sec3=&sec3;
-        }
-
-        sec4.readSec(&file);
-        data.sec4=&sec4;
-
-        sec5.readSec(&file);*/
 
         listData.append (data);
       }while(!checkEOF());
@@ -70,23 +44,6 @@ Message::Message(QString fileName)
     }
 }
 
-/*Message* Message::readSecs(){
-
-    sec0.readSec(&file);
-    //if(getEOF ()) endM=true;
-    sec1.readSec(&file);
-    if(sec1.getGDS())
-        sec2.readSec (&file);
-    if(sec1.getBMS ())
-        sec3.readSec(&file);
-    sec4.readSec(&file);
-    sec5.readSec(&file);
-
-
-
-    return this;
-}
-*/
 bool Message::checkEOF()
 {
     char c=file.get();

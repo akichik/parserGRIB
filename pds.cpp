@@ -1,15 +1,9 @@
 #include "pds.h"
 #include "pds.h"
 
-PDS::PDS()
-{
+PDS::PDS(){}
 
-}
-
-PDS::~PDS()
-{
-
-}
+PDS::~PDS(){}
 
 void PDS::readSec(ifstream *file)
 {
@@ -134,6 +128,8 @@ int PDS::factorD(char a,char b)
          if (sign)
              D=-int2(a,b);
          else D=int2(a,b);
+
+         return D;
 }
 
 int PDS::getfactorD()

@@ -40,7 +40,7 @@ public:
      * \return название сетки
      */
     string dataType(char);
-
+    int getPointCnt(){return Ni*Nj;}
 
 private:
     long sectionLength;

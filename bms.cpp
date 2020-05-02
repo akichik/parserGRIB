@@ -6,9 +6,11 @@ BMS::~BMS(){}
 
 void BMS::readSec(ifstream *file)
 {
+    GDS data;
     char message[80];
 
-    for(int i=0;i<=2;i++){
+    int i;
+    for(i=0;i<=2;i++){
         //cout<<file.tellg()<<endl;
         message[i]=file->get();
     }
@@ -21,12 +23,15 @@ void BMS::readSec(ifstream *file)
     }
 
     unusedBit=message[3];
-    if(int2(message[4],message[5])==1)
-        specificBitmap=true;
+    if(int2(message[4],message[5])==0){
+        int cnt=data.getPointCnt ();
+
+       // for(i=0;i<cnt;i++)
+         //  bitMap[i]=(message[i+8]==1)?true:false;
+    }
     else {
-        specificBitmap=false;
+        specificBitmap=true;
     }
 
-    //TODO bit-map
 
 }

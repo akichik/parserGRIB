@@ -15,17 +15,6 @@
 class IS:public Reader{
 public:
     IS();
-   /* IS(const IS&test){
-        totalLength = test.totalLength;
-        editNumber = test.editNumber;
-    }*/
-
-    IS & operator =(const IS&obj)
-    {
-        totalLength = obj.totalLength;
-        editNumber = obj.editNumber;
-        return *this;
-    }
     virtual ~IS();
     virtual void readSec(ifstream*);
 

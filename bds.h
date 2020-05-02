@@ -3,6 +3,10 @@
 #include <vector>
 #pragma once
 #include <reader.h>
+#include <cmath>
+#include <QList>
+#include <pds.h>
+#include <bitset>
 
 /*!
 \file
@@ -37,6 +41,8 @@ public:
      * \param октеты 7-10
      */
     void ref(char,char,char,char);
+    void simple(ifstream *file, int D);
+    void finishData(size_t bit,string data, vector<float>* dataF);
 private:
     long sectionLength;
     int flag;
@@ -46,8 +52,8 @@ private:
     bool addflag;
     int E;
     float refValue;
-    int bit;
-    vector<int> data;
+    size_t bit;
+    vector<double> dataF;
 };
 
 #endif // BDS_H
