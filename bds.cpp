@@ -4,12 +4,10 @@ BDS::BDS(){}
 
 BDS::~BDS(){}
 
-void BDS::readSec(ifstream *file)
+void BDS::readSec(ifstream *file, int D, string type)
 {
     char message[4];
-    PDS sec1;
-    int D=sec1.getfactorD();
-
+    pointData.clear();
     for(int i=0;i<=3;i++){
         message[i]=file->get();
     }
@@ -23,7 +21,7 @@ void BDS::readSec(ifstream *file)
     addflag=((message[3]&16)==0);
     if (simplePack){
         cout<<"Simple Pack"<<endl;
-        simple(file, D);
+        simple(file, D, type);
     }
 
 
@@ -47,9 +45,11 @@ void BDS::ref(char a, char b, char c, char d)
 
 //https://www.geeksforgeeks.org/bitwise-and-of-n-binary-strings/
 
-void BDS::simple(ifstream *file, int D)
-{   char message[7];
-    QList<float> pointData;
+void BDS::simple(ifstream *file, int D, string type)
+
+{
+    char message[7];
+
     vector<float> dataF;
     string data;
     float pointD;
@@ -68,17 +68,25 @@ void BDS::simple(ifstream *file, int D)
     for(int i=0;i<dataF.size();i++)
     {
         pointD=(refValue+dataF[i]*pow(2,E))/pow(10,D);
+        if(type=="Temp")
+            pointD=pointD - 273,15;//Перевод из К в С
+        else if(type=="Temp_pot")
+             pointD=pointD - 273,15;//Перевод из К в С
+        else if(type=="Pressure")
+             pointD=pointD/133,3224;//перевод в мм.рт.ст из Па
+        else if(type=="Pressure_Msl")
+             pointD=pointD/133,3224;//перевод в мм.рт.ст из Па
         pointData.push_back(pointD);
-        cout<<"Point: "<<pointData[i]<<endl;
+        cout<<type<<": "<<pointData[i]<<endl;
     }
 
 }
 
 void BDS::finishData(size_t bit, string data, vector<float>* dataF )
 {
-    for (int i=0;i< data.size ();i++) {
+    /*for (int i=0;i< data.size ();i++) {
         cout << std::bitset<8>(data[i])<<endl;
-    }
+    }*/
 
     int help=0;
     int cnt=data.size ()*8/bit;

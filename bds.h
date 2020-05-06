@@ -24,7 +24,7 @@ class BDS:public Reader
 public:
     BDS();
     virtual ~BDS();
-    virtual void readSec(ifstream *file);
+    virtual void readSec(ifstream *file, int D, string type);
     BDS & operator =(const BDS&obj)
     {
         refValue = obj.refValue;
@@ -41,7 +41,7 @@ public:
      * \param октеты 7-10
      */
     void ref(char,char,char,char);
-    void simple(ifstream *file, int D);
+    void simple(ifstream *file, int D, string type);
     void finishData(size_t bit,string data, vector<float>* dataF);
 private:
     long sectionLength;
@@ -53,7 +53,7 @@ private:
     int E;
     float refValue;
     size_t bit;
-    vector<double> dataF;
+    QList<float> pointData;
 };
 
 #endif // BDS_H

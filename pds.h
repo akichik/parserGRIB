@@ -41,6 +41,7 @@ public:
      * \return идентификатор центра
      */
     string centerIndentification(char a);
+    string dataType(char a);
     uint period(int,int,int,int);
 
     /*!
@@ -56,7 +57,7 @@ public:
     long long UTC_mktime (int year,int month,int day,int hour,int min,int sec);
     bool getGDS();
     bool getBMS();
-    char  getDataType(){ return indicator_of_parameter_and_units; }
+    string  getDataType(){ return indicator_of_parameter_and_units; }
     /*!
      * \brief factorD
      * Вычисляет D по двум октетам
@@ -76,7 +77,7 @@ private:
     int grid_identification;///Идентификация сетки (географическое положение и площадь)
     bool GDS; ///Флаг наличия GDS(true-included,else omitted)
     bool BMS;///Флаг наличия BMS(true-included,else omitted)
-    char indicator_of_parameter_and_units;///Индикатор параметра и единиц измерения
+    string indicator_of_parameter_and_units;///Индикатор параметра и единиц измерения
     int indicator_of_type_of_level_or_layer;///Индикатор типа уровня или слоя
     int info_of_the_level_or_layer;///Высота, давление и т. д. уровня или слоя
     int year;

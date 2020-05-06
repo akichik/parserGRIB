@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    //QString path=QFileDialog::getOpenFileName(0,"Open file","","*.grb");
-    QString path="C:\\Users\\kicha\\Downloads\\Telegram Desktop\\Anna\\Anna\\Diplom\\grib files\\gfs20200112200203822.grb";
+    QString path=QFileDialog::getOpenFileName(0,"Open file","","*.grb");
+    //QString path="C:\\Users\\kicha\\Downloads\\Telegram Desktop\\Anna\\Anna\\Diplom\\grib files\\gfs.grb";//20200112200203822
     Message mess(path);
 
     QList<uniData> listD;

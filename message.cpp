@@ -27,7 +27,7 @@ Message::Message(QString fileName)
             data.sec2.readSec (&file);
         if(data.sec1.getBMS ())
             data.sec3.readSec (&file);
-        data.sec4.readSec (&file);
+        data.sec4.readSec (&file, data.sec1.getfactorD(),data.sec1.getDataType());
 
         sec5.readSec (&file);
 

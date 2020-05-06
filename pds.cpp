@@ -38,7 +38,7 @@ void PDS::readSec(ifstream *file)
     GDS=(message[7]&128)!=0;
     BMS=(message[7]&64)!=0;
 
-    indicator_of_parameter_and_units=message[8];
+    indicator_of_parameter_and_units=dataType(message[8]);
     cout<<"indicator_of_parameter_and_units: "<<indicator_of_parameter_and_units<<endl;
 
     indicator_of_type_of_level_or_layer=message[9];
@@ -182,6 +182,40 @@ string PDS::centerIndentification(char a)
         break;
     case static_cast<int>(OrigCenters::DeBilt):
         s="DeBilt";
+        break;
+    default:
+        s="Unknown";
+    }
+    return s;
+}
+
+string PDS::dataType(char a)
+{
+    string s;
+    switch(a){
+    case static_cast<int>(dataTypes::GRB_PRESSURE):
+        s="Pressure";
+         break;
+    case static_cast<int>(dataTypes::GRB_PRESSURE_MSL):
+         s="Pressure_Msl";
+         break;
+    case static_cast<int>(dataTypes::GRB_GEOPOT_HGT):
+         s="Geopot_Hgt";
+         break;
+    case static_cast<int>(dataTypes::GRB_TEMP):
+        s="Temp";
+        break;
+    case static_cast<int>(dataTypes::GRB_TEMP_POT):
+        s="Temp_pot";
+        break;
+    case static_cast<int>(dataTypes::GRB_TMAX):
+        s="temp_MAX";
+        break;
+    case static_cast<int>(dataTypes::GRB_TMIN):
+        s="temp_MIN";
+        break;
+    case static_cast<int>(dataTypes::GRB_WIND_SPEED):
+        s="wind_speed";
         break;
     default:
         s="Unknown";
